@@ -1,0 +1,59 @@
+/* =========
+   @theme: fluid typography の変数管理
+   ========= */
+:root {
+    /* ==== font-size presets ==== */
+    --fluid-min-xl: 20px;
+    --fluid-max-5xl: 48px;
+
+    --fluid-min-2xl: 24px;
+    --fluid-max-4xl: 36px;
+
+    --fluid-min-3xl: 30px;
+    --fluid-max-4xl: 36px;
+
+    /* ==== viewport range ==== */
+    --fluid-min-vw: 360px;
+    --fluid-max-vw: 1280px;
+}
+
+/* =========
+     Utilities: fluid-text (font-sizeのみfluid化)
+     ========= */
+@layer utilities {
+    .fluid-text {
+        font-size: clamp(
+            var(--fluid-min),
+            calc(
+                var(--fluid-min) + (var(--fluid-max) - var(--fluid-min)) *
+                    (
+                        (100vw - var(--fluid-min-vw)) /
+                            (var(--fluid-max-vw) - var(--fluid-min-vw))
+                    )
+            ),
+            var(--fluid-max)
+        );
+    }
+
+    /* ==== presets ==== */
+    .fluid-2xl-4xl {
+        --fluid-min: var(--fluid-min-2xl);
+        --fluid-max: var(--fluid-max-4xl);
+        --fluid-min-vw: var(--fluid-min-vw);
+        --fluid-max-vw: var(--fluid-max-vw);
+    }
+
+    .fluid-xl-5xl {
+        --fluid-min: var(--fluid-min-xl);
+        --fluid-max: var(--fluid-max-5xl);
+        --fluid-min-vw: var(--fluid-min-vw);
+        --fluid-max-vw: var(--fluid-max-vw);
+    }
+
+    .fluid-3xl-4xl {
+        --fluid-min: var(--fluid-min-3xl);
+        --fluid-max: var(--fluid-max-4xl);
+        --fluid-min-vw: var(--fluid-min-vw);
+        --fluid-max-vw: var(--fluid-max-vw);
+    }
+}
