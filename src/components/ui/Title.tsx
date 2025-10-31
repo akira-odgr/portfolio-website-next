@@ -5,7 +5,7 @@ import React from "react";
 interface titleProps {
     subtitle: string;
     title: string;
-    link: string;
+    link?: string;
 }
 
 export const Title = ({ subtitle, title, link }: titleProps) => {
@@ -16,14 +16,19 @@ export const Title = ({ subtitle, title, link }: titleProps) => {
                 <h2>{title}</h2>
             </div>
 
-            <button>
-                <Link href="#" className="primary-btn flex items-center gap-2">
-                    {link}
-                    <span>
-                        <RiArrowRightLine size={20} />
-                    </span>
-                </Link>
-            </button>
+            {link && (
+                <button>
+                    <Link
+                        href="#"
+                        className="primary-btn flex items-center gap-2"
+                    >
+                        {link}
+                        <span>
+                            <RiArrowRightLine size={20} />
+                        </span>
+                    </Link>
+                </button>
+            )}
         </div>
     );
 };
