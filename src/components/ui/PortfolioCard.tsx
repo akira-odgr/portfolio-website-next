@@ -1,7 +1,11 @@
+"use client";
+
 import { cn } from "@/lib/utils/cn";
 import { RiArrowRightUpLongLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/motion/animations";
 
 interface portfolioCardProps {
     img: string;
@@ -11,7 +15,7 @@ interface portfolioCardProps {
 
 export const PortfolioCard = ({ img, title, date }: portfolioCardProps) => {
     return (
-        <div>
+        <motion.div variants={fadeUp}>
             {/* Card image */}
             <figure className="mb-5">
                 <Image
@@ -39,7 +43,7 @@ export const PortfolioCard = ({ img, title, date }: portfolioCardProps) => {
                     </span>
                 </Link>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

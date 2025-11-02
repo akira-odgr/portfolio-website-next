@@ -1,6 +1,9 @@
+"use client";
+
 import { RiArrowRightLine } from "@remixicon/react";
 import Link from "next/link";
-import React from "react";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/motion/animations";
 
 interface titleProps {
     subtitle: string;
@@ -12,12 +15,18 @@ export const Title = ({ subtitle, title, link }: titleProps) => {
     return (
         <div className="flex items-center justify-between flex-wrap gap-7">
             <div>
-                <p className="subtitle">{subtitle}</p>
-                <h2>{title}</h2>
+                <motion.p
+                    variants={fadeUp}
+                    viewport={{ once: true }}
+                    className="subtitle"
+                >
+                    {subtitle}
+                </motion.p>
+                <motion.h2 variants={fadeUp}>{title}</motion.h2>
             </div>
 
             {link && (
-                <button>
+                <motion.button variants={fadeUp}>
                     <Link
                         href="#"
                         className="primary-btn flex items-center gap-2"
@@ -27,7 +36,7 @@ export const Title = ({ subtitle, title, link }: titleProps) => {
                             <RiArrowRightLine size={20} />
                         </span>
                     </Link>
-                </button>
+                </motion.button>
             )}
         </div>
     );

@@ -1,14 +1,24 @@
+"use client";
+
 import { Divider } from "@/components/ui/Divider";
-import SocialIcons from "@/components/ui/SocialIcons";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 import { Title } from "@/components/ui/Title";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/motion/animations";
 
 export const AboutSec = () => {
     return (
         <section className="section">
-            <div className="container">
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="container"
+            >
                 {/* Title */}
                 <Title subtitle="About" title="I am Damien" link="Know More" />
                 {/* Divider */}
@@ -21,16 +31,19 @@ export const AboutSec = () => {
                     )}
                 >
                     {/* banner */}
-                    <figure>
+                    <motion.figure variants={fadeUp}>
                         <Image
                             src="/images/about-section-banner.png"
                             alt="banner"
                             width={783}
                             height={710}
                         />
-                    </figure>
+                    </motion.figure>
                     {/* content */}
-                    <div className="border border-neutral-900 p-6 rounded-2xl mt-5">
+                    <motion.div
+                        variants={fadeUp}
+                        className="border border-neutral-900 p-6 rounded-2xl mt-5"
+                    >
                         {/* wrapper */}
                         <div>
                             <h3
@@ -124,9 +137,9 @@ export const AboutSec = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

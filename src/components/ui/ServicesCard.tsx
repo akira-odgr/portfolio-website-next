@@ -1,13 +1,15 @@
-import Image from "next/image";
-import React from "react";
+"use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/motion/animations";
 interface cardProps {
     label: string;
 }
 
 export const ServicesCard = ({ label }: cardProps) => {
     return (
-        <div>
+        <motion.div variants={fadeUp}>
             <div className="flex items-center gap-2 mb-3 border border-neutral-800 py-6 px-5">
                 <Image
                     src="/images/star-shape.svg"
@@ -17,7 +19,7 @@ export const ServicesCard = ({ label }: cardProps) => {
                 />
                 <span>{label}</span>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

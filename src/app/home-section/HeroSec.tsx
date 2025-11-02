@@ -5,12 +5,17 @@ import { Button } from "@/components/ui/Button";
 import { MarqueeSec } from "@/components/ui/MarqueeSec";
 import { cn } from "@/lib/utils/cn";
 import { motion } from "framer-motion";
-import { fadeUp } from "@/motion/animations";
+import { fadeUp, staggerContainer } from "@/motion/animations";
 
 export const HeroSec = () => {
     return (
         <section>
-            <div>
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
                 {/* content */}
                 <div
                     className={cn(
@@ -21,20 +26,11 @@ export const HeroSec = () => {
                 >
                     {/* Title */}
                     <div>
-                        <motion.p
-                            variants={fadeUp()}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="subtitle"
-                        >
+                        <motion.p variants={fadeUp} className="subtitle">
                             Stunning Photography by
                         </motion.p>
                         <motion.h1
-                            variants={fadeUp(0.4)}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
+                            variants={fadeUp}
                             className="text-[40px] sm:text-5xl md:text-6xl font-semibold "
                         >
                             Damien Braun
@@ -50,12 +46,7 @@ export const HeroSec = () => {
                         />
                     </div>
                     {/* Title 2 */}
-                    <motion.div
-                        variants={fadeUp(0.8)}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                    >
+                    <motion.div variants={fadeUp}>
                         <Button label="Let's" />
                         <h2>Work Together</h2>
                     </motion.div>
@@ -63,13 +54,7 @@ export const HeroSec = () => {
                 {/* marquee */}
                 <MarqueeSec />
                 {/* banner */}
-                <motion.figure
-                    variants={fadeUp(1.2)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="container"
-                >
+                <motion.figure variants={fadeUp} className="container">
                     <Image
                         src="/images/hero-banner.png"
                         alt="hero banner"
@@ -77,7 +62,7 @@ export const HeroSec = () => {
                         height={424}
                     />
                 </motion.figure>
-            </div>
+            </motion.div>
         </section>
     );
 };

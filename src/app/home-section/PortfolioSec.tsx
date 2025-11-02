@@ -1,12 +1,22 @@
+"use client";
+
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import Title from "@/components/ui/Title";
 import { portfolioSectionItems } from "@/data/data";
 import { cn } from "@/lib/utils/cn";
+import { fadeUp, staggerContainer } from "@/motion/animations";
+import { motion } from "framer-motion";
 
 export const PortfolioSec = () => {
     return (
         <section className="section">
-            <div className="container">
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="container"
+            >
                 {/* Title */}
                 <Title
                     subtitle="Portfolio"
@@ -15,7 +25,9 @@ export const PortfolioSec = () => {
                 />
 
                 {/* Card Wrapper */}
-                <div
+                <motion.div
+                    variants={staggerContainer}
+                    viewport={{ once: true }}
                     className={cn(
                         "grid gap-12 mt-20",
                         "md:grid-cols-2",
@@ -31,8 +43,8 @@ export const PortfolioSec = () => {
                             date={item.date}
                         />
                     ))}
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
 };

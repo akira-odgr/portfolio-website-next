@@ -5,7 +5,9 @@ import Title from "@/components/ui/Title";
 import { faqItems } from "@/data/data";
 import { cn } from "@/lib/utils/cn";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "@remixicon/react";
-import React, { useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/motion/animations";
 
 export const FaqSec = () => {
     const [openId, setOpenId] = useState<null | string | number>(
@@ -15,9 +17,16 @@ export const FaqSec = () => {
     const handleClick = (id: number) => {
         setOpenId(openId === id ? null : id);
     };
+
     return (
         <section className="section">
-            <div className="container">
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="container"
+            >
                 {/* Title */}
                 <Title subtitle="FAQ’s" title="Frequently Asked Questions" />
 
@@ -32,7 +41,8 @@ export const FaqSec = () => {
                     )}
                 >
                     {faqItems.map((item) => (
-                        <div
+                        <motion.div
+                            variants={fadeUp}
                             key={item.id}
                             className="border border-neutral-800"
                         >
@@ -65,10 +75,10 @@ export const FaqSec = () => {
                             >
                                 <p className="px-5 pb-8">{item.text}</p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };
