@@ -100,12 +100,14 @@ export const AboutSec = () => {
                             {/* buttons wrapper */}
                             <div
                                 className={cn(
-                                    "flex gap-3 justify-between flex-col flex-wrap",
+                                    "flex gap-3 justify-between items-center flex-col flex-wrap",
                                     "lg:flex-row"
                                 )}
                             >
                                 {/* Social icons */}
-                                <SocialIcons />
+                                <div>
+                                    <SocialIcons />
+                                </div>
                                 <div className="flex gap-4 flex-wrap">
                                     <Link
                                         href="#"

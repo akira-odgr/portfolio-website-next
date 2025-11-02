@@ -1,6 +1,5 @@
 import { socialLinks } from "@/data/data";
 import { cn } from "@/lib/utils/cn";
-import React from "react";
 
 export const SocialIcons = () => {
     return (

@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { MarqueeSec } from "@/components/ui/MarqueeSec";
 import { cn } from "@/lib/utils/cn";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/motion/animations";
 
 export const HeroSec = () => {
     return (
@@ -12,15 +15,30 @@ export const HeroSec = () => {
                 <div
                     className={cn(
                         "container grid",
-                        "lg:grid-cols-3 lg:items-center"
+                        "lg:grid-cols-3 lg:items-center",
+                        "max-lg:my-10"
                     )}
                 >
                     {/* Title */}
                     <div>
-                        <p className="subtitle">Stunning Photography by</p>
-                        <h1 className="text-[40px] sm:text-5xl md:text-6xl font-semibold ">
+                        <motion.p
+                            variants={fadeUp()}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="subtitle"
+                        >
+                            Stunning Photography by
+                        </motion.p>
+                        <motion.h1
+                            variants={fadeUp(0.4)}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="text-[40px] sm:text-5xl md:text-6xl font-semibold "
+                        >
                             Damien Braun
-                        </h1>
+                        </motion.h1>
                     </div>
                     {/* shape */}
                     <div className="max-lg:hidden">
@@ -32,22 +50,33 @@ export const HeroSec = () => {
                         />
                     </div>
                     {/* Title 2 */}
-                    <div>
+                    <motion.div
+                        variants={fadeUp(0.8)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         <Button label="Let's" />
                         <h2>Work Together</h2>
-                    </div>
+                    </motion.div>
                 </div>
                 {/* marquee */}
                 <MarqueeSec />
                 {/* banner */}
-                <figure className="container">
+                <motion.figure
+                    variants={fadeUp(1.2)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="container"
+                >
                     <Image
                         src="/images/hero-banner.png"
                         alt="hero banner"
                         width={1280}
                         height={424}
                     />
-                </figure>
+                </motion.figure>
             </div>
         </section>
     );
