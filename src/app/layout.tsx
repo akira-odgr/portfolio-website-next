@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils/cn";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { LenisProvider } from "@/components/layout/LenisProvider";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -26,9 +27,11 @@ export default function RootLayout({
     return (
         <html lang="ja" className={cn("antialiased", manrope.className)}>
             <body className="antialiased">
-                <Header />
-                <main className="min-h-screen">{children}</main>
-                <Footer />
+                <LenisProvider>
+                    <Header />
+                    <main className="min-h-screen">{children}</main>
+                    <Footer />
+                </LenisProvider>
             </body>
         </html>
     );
